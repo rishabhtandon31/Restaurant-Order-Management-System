@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:roms;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: INFO
+
+app:
+  timezone: Asia/Kolkata
+  pricing:
+    serviceTaxRate: 0.18
+    deliveryCharge: 40.00
+  payment:
+    maxAttempts: 3
