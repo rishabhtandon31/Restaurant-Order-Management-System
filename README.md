@@ -1,4 +1,4 @@
-# Restaurant Order Management System (Jumio SDE3 Assignment)
+# Restaurant Order Management System
 
 A runnable **Spring Boot 3 + Java 17 + H2** REST API for a simple Restaurant Order Management System.
 
