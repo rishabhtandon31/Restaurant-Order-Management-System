@@ -4,12 +4,13 @@ import com.jumio.roms.domain.enums.DietType;
 import com.jumio.roms.domain.enums.ItemCategory;
 import com.jumio.roms.domain.enums.MenuType;
 import jakarta.validation.constraints.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@Data
 public class MenuItemUpsertRequest {
-
     private UUID id; // optional for bulk upsert
 
     @NotNull(message = "menuType is required")
@@ -34,31 +35,4 @@ public class MenuItemUpsertRequest {
     private DietType dietType;
 
     private boolean available = true;
-
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
-
-    public MenuType getMenuType() { return menuType; }
-    public void setMenuType(MenuType menuType) { this.menuType = menuType; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public BigDecimal getPrice() { return price; }
-    public void setPrice(BigDecimal price) { this.price = price; }
-
-    public int getPrepTimeMinutes() { return prepTimeMinutes; }
-    public void setPrepTimeMinutes(int prepTimeMinutes) { this.prepTimeMinutes = prepTimeMinutes; }
-
-    public ItemCategory getCategory() { return category; }
-    public void setCategory(ItemCategory category) { this.category = category; }
-
-    public DietType getDietType() { return dietType; }
-    public void setDietType(DietType dietType) { this.dietType = dietType; }
-
-    public boolean isAvailable() { return available; }
-    public void setAvailable(boolean available) { this.available = available; }
 }

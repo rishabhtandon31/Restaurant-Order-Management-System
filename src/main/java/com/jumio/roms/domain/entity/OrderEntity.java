@@ -3,6 +3,9 @@ package com.jumio.roms.domain.entity;
 import com.jumio.roms.domain.enums.OrderStatus;
 import com.jumio.roms.domain.enums.OrderType;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -15,8 +18,10 @@ import java.util.UUID;
         @Index(name = "idx_orders_branch_status", columnList = "branch_id, status"),
         @Index(name = "idx_orders_created", columnList = "createdAt")
 })
+@Getter
+@Setter
+@NoArgsConstructor
 public class OrderEntity {
-
     @Id
     @GeneratedValue
     private UUID id;
@@ -77,57 +82,6 @@ public class OrderEntity {
     void onUpdate() {
         updatedAt = Instant.now();
     }
-
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
-
-    public Branch getBranch() { return branch; }
-    public void setBranch(Branch branch) { this.branch = branch; }
-
-    public String getCustomerName() { return customerName; }
-    public void setCustomerName(String customerName) { this.customerName = customerName; }
-
-    public String getCustomerPhone() { return customerPhone; }
-    public void setCustomerPhone(String customerPhone) { this.customerPhone = customerPhone; }
-
-    public String getCustomerAddress() { return customerAddress; }
-    public void setCustomerAddress(String customerAddress) { this.customerAddress = customerAddress; }
-
-    public OrderType getOrderType() { return orderType; }
-    public void setOrderType(OrderType orderType) { this.orderType = orderType; }
-
-    public OrderStatus getStatus() { return status; }
-    public void setStatus(OrderStatus status) { this.status = status; }
-
-    public List<OrderLineItem> getLineItems() { return lineItems; }
-    public void setLineItems(List<OrderLineItem> lineItems) { this.lineItems = lineItems; }
-
-    public Instant getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
-
-    public Instant getUpdatedAt() { return updatedAt; }
-    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
-
-    public BigDecimal getSubtotal() { return subtotal; }
-    public void setSubtotal(BigDecimal subtotal) { this.subtotal = subtotal; }
-
-    public BigDecimal getDiscount() { return discount; }
-    public void setDiscount(BigDecimal discount) { this.discount = discount; }
-
-    public BigDecimal getTaxableAmount() { return taxableAmount; }
-    public void setTaxableAmount(BigDecimal taxableAmount) { this.taxableAmount = taxableAmount; }
-
-    public BigDecimal getTax() { return tax; }
-    public void setTax(BigDecimal tax) { this.tax = tax; }
-
-    public BigDecimal getDeliveryCharge() { return deliveryCharge; }
-    public void setDeliveryCharge(BigDecimal deliveryCharge) { this.deliveryCharge = deliveryCharge; }
-
-    public BigDecimal getGrandTotal() { return grandTotal; }
-    public void setGrandTotal(BigDecimal grandTotal) { this.grandTotal = grandTotal; }
-
-    public long getVersion() { return version; }
-    public void setVersion(long version) { this.version = version; }
 
     public void addLineItem(OrderLineItem li) {
         this.lineItems.add(li);
