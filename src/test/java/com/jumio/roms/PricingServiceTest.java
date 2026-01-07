@@ -5,6 +5,7 @@ import com.jumio.roms.domain.entity.*;
 import com.jumio.roms.domain.enums.LineItemKind;
 import com.jumio.roms.domain.enums.OrderType;
 import com.jumio.roms.service.PricingService;
+import com.jumio.roms.service.impl.PricingServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -19,7 +20,7 @@ public class PricingServiceTest {
         props.getPricing().setServiceTaxRate(new BigDecimal("0.18"));
         props.getPricing().setDeliveryCharge(new BigDecimal("40.00"));
 
-        PricingService pricing = new PricingService(props);
+        PricingService pricing = new PricingServiceImpl(props);
 
         Branch b = new Branch();
         b.setName("B1");
