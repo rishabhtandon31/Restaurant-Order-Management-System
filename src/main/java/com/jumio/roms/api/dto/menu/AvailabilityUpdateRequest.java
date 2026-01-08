@@ -1,8 +1,8 @@
 package com.jumio.roms.api.dto.menu;
 
+import lombok.Data;
+
+@Data
 public class AvailabilityUpdateRequest {
     private boolean available;
-
-    public boolean isAvailable() { return available; }
-    public void setAvailable(boolean available) { this.available = available; }
 }

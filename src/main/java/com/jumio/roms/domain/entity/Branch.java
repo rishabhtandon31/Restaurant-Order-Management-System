@@ -1,12 +1,18 @@
 package com.jumio.roms.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
 @Table(name = "branches")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Branch {
-
     @Id
     @GeneratedValue
     private UUID id;
@@ -16,13 +22,4 @@ public class Branch {
 
     @Column(nullable = false)
     private String address;
-
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
 }

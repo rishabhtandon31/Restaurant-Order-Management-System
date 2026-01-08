@@ -6,13 +6,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Min;
+import lombok.Data;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
+@Data
 public class OrderCreateRequest {
-
     @NotBlank(message = "customerName is required")
     private String customerName;
 
@@ -30,24 +31,7 @@ public class OrderCreateRequest {
     @NotEmpty(message = "items is required")
     private List<OrderItemRequest> items;
 
-    public String getCustomerName() { return customerName; }
-    public void setCustomerName(String customerName) { this.customerName = customerName; }
-
-    public String getCustomerPhone() { return customerPhone; }
-    public void setCustomerPhone(String customerPhone) { this.customerPhone = customerPhone; }
-
-    public String getCustomerAddress() { return customerAddress; }
-    public void setCustomerAddress(String customerAddress) { this.customerAddress = customerAddress; }
-
-    public OrderType getOrderType() { return orderType; }
-    public void setOrderType(OrderType orderType) { this.orderType = orderType; }
-
-    public Instant getOrderTime() { return orderTime; }
-    public void setOrderTime(Instant orderTime) { this.orderTime = orderTime; }
-
-    public List<OrderItemRequest> getItems() { return items; }
-    public void setItems(List<OrderItemRequest> items) { this.items = items; }
-
+    @Data
     public static class OrderItemRequest {
         @NotNull(message = "kind is required")
         private LineItemKind kind;
@@ -60,17 +44,5 @@ public class OrderCreateRequest {
         private int quantity = 1;
 
         private String instructions;
-
-        public LineItemKind getKind() { return kind; }
-        public void setKind(LineItemKind kind) { this.kind = kind; }
-
-        public UUID getRefId() { return refId; }
-        public void setRefId(UUID refId) { this.refId = refId; }
-
-        public int getQuantity() { return quantity; }
-        public void setQuantity(int quantity) { this.quantity = quantity; }
-
-        public String getInstructions() { return instructions; }
-        public void setInstructions(String instructions) { this.instructions = instructions; }
     }
 }

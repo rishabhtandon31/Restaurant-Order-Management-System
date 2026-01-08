@@ -4,6 +4,9 @@ import com.jumio.roms.domain.enums.DietType;
 import com.jumio.roms.domain.enums.ItemCategory;
 import com.jumio.roms.domain.enums.MenuType;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -14,6 +17,9 @@ import java.util.UUID;
         @Index(name = "idx_menu_items_branch_menu", columnList = "branch_id, menuType"),
         @Index(name = "idx_menu_items_avail", columnList = "available")
 })
+@Getter
+@Setter
+@NoArgsConstructor
 public class MenuItem {
     @Id
     @GeneratedValue
@@ -60,40 +66,4 @@ public class MenuItem {
     void onUpdate() {
         updatedAt = Instant.now();
     }
-
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
-
-    public Branch getBranch() { return branch; }
-    public void setBranch(Branch branch) { this.branch = branch; }
-
-    public MenuType getMenuType() { return menuType; }
-    public void setMenuType(MenuType menuType) { this.menuType = menuType; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public BigDecimal getPrice() { return price; }
-    public void setPrice(BigDecimal price) { this.price = price; }
-
-    public int getPrepTimeMinutes() { return prepTimeMinutes; }
-    public void setPrepTimeMinutes(int prepTimeMinutes) { this.prepTimeMinutes = prepTimeMinutes; }
-
-    public ItemCategory getCategory() { return category; }
-    public void setCategory(ItemCategory category) { this.category = category; }
-
-    public DietType getDietType() { return dietType; }
-    public void setDietType(DietType dietType) { this.dietType = dietType; }
-
-    public boolean isAvailable() { return available; }
-    public void setAvailable(boolean available) { this.available = available; }
-
-    public Instant getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
-
-    public Instant getUpdatedAt() { return updatedAt; }
-    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
 }

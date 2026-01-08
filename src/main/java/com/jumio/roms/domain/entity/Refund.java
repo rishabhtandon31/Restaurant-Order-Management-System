@@ -2,6 +2,9 @@ package com.jumio.roms.domain.entity;
 
 import com.jumio.roms.domain.enums.RefundStatus;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -11,8 +14,10 @@ import java.util.UUID;
 @Table(name = "refunds", indexes = {
         @Index(name = "idx_refunds_payment", columnList = "payment_id")
 })
+@Getter
+@Setter
+@NoArgsConstructor
 public class Refund {
-
     @Id
     @GeneratedValue
     private UUID id;
@@ -37,25 +42,4 @@ public class Refund {
 
     @Column(nullable = false)
     private Instant createdAt = Instant.now();
-
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
-
-    public Payment getPayment() { return payment; }
-    public void setPayment(Payment payment) { this.payment = payment; }
-
-    public OrderLineItem getOrderLineItem() { return orderLineItem; }
-    public void setOrderLineItem(OrderLineItem orderLineItem) { this.orderLineItem = orderLineItem; }
-
-    public BigDecimal getAmount() { return amount; }
-    public void setAmount(BigDecimal amount) { this.amount = amount; }
-
-    public RefundStatus getStatus() { return status; }
-    public void setStatus(RefundStatus status) { this.status = status; }
-
-    public String getReason() { return reason; }
-    public void setReason(String reason) { this.reason = reason; }
-
-    public Instant getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
 }
